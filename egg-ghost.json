@@ -15,7 +15,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!/bin/ash\r\n\r\ncd /mnt/server\r\n\r\napk --no-cache add curl git\r\napk add --no-cache 'su-exec>=0.2'\r\n\r\ngit clone https://github.com/razboy20/pterodactyl-ghost ./temp\r\n\r\ncp -r ./temp/caddy /mnt/server/\r\ncp ./temp/start.sh /mnt/server\r\ncurl \"https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=33572405766393\" -s --output /mnt/server/caddy-server\r\n\r\nchmod +x /mnt/server/caddy-server\r\nchmod +x /mnt/server/start.sh\r\n\r\nrm -rf ./temp\r\n\r\nmkdir /mnt/server/ghost\r\nchown node:node /mnt/server/ghost\r\nsu-exec node ghost install --db mysql --no-start --no-enable --no-prompt --no-setup --dir /mnt/server/ghost\r\n\r\nsu-exec node ghost config --ip 0.0.0.0 --port 2368 --no-prompt --db mysql --dbhost DBHOSTHERE --dbuser DBUSERHERE --dbpass PASSCODEHERE --url http://localhost:2368\r\nsu-exec node ghost config paths.contentPath \"/mnt/container/ghost/content\"",
+            "script": "#!/bin/ash\r\n\r\ncd /mnt/server\r\n\r\napk --no-cache add curl git sudo\r\napk add --no-cache 'su-exec>=0.2'\r\n\r\ngit clone https://github.com/razboy20/pterodactyl-ghost ./temp\r\n\r\ncp -r ./temp/caddy /mnt/server/\r\ncp ./temp/start.sh /mnt/server\r\ncurl \"https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=33572405766393\" -s --output /mnt/server/caddy-server\r\n\r\nchmod +x /mnt/server/caddy-server\r\nchmod +x /mnt/server/start.sh\r\n\r\nrm -rf ./temp\r\n\r\nmkdir /mnt/server/ghost\r\nghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local",
             "container": "alpine:latest",
             "entrypoint": "ash"
         }
