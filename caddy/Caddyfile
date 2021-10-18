@@ -1,6 +1,6 @@
 {
-	http_port 
-	https_port 
+    http_port 
+    https_port 
 	admin off
 }
 
