@@ -15,7 +15,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!/bin/ash\r\n\r\ncd /mnt/server\r\n\r\napk --no-cache add curl git sudo\r\napk add --no-cache 'su-exec>=0.2'\r\n\r\ngit clone https://github.com/razboy20/pterodactyl-ghost ./temp\r\n\r\ncp -r ./temp/caddy /mnt/server/\r\ncp ./temp/start.sh /mnt/server\r\ncurl \"https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=33572405766393\" -s --output /mnt/server/caddy-server\r\n\r\nchmod +x /mnt/server/caddy-server\r\nchmod +x /mnt/server/start.sh\r\n\r\nrm -rf ./temp\r\n\r\nmkdir /mnt/server/ghost\r\nghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local",
+            "script": "#!/bin/ash\r\n\r\ncd /mnt/server\r\n\r\napk --no-cache add curl git sudo nodejs npm\r\napk add --no-cache 'su-exec>=0.2'\r\nnpm install ghost-cli@latest -g\r\n\r\ngit clone https://github.com/razboy20/pterodactyl-ghost ./temp\r\n\r\ncp -r ./temp/caddy /mnt/server/\r\ncp ./temp/start.sh /mnt/server\r\ncurl \"https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=33572405766393\" -s --output /mnt/server/caddy-server\r\n\r\nchmod +x /mnt/server/caddy-server\r\nchmod +x /mnt/server/start.sh\r\n\r\nrm -rf ./temp\r\n\r\nmkdir /mnt/server/ghost\r\nghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local",
             "container": "alpine:latest",
             "entrypoint": "ash"
         }
