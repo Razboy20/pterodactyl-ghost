@@ -30,3 +30,6 @@ ghostlink=$(readlink /mnt/server/ghost/current)
 if [[ "${ghostlink:0:12}" == "/mnt/server/" ]]; then
     ln -sfn /home/container/${ghostlink:12} /mnt/server/ghost/current
 fi
+
+sed 's/\/mnt\/server\//\/home\/container\//g' /mnt/server/ghost/config.development.json > temp.json
+mv temp.json /mnt/server/ghost/config.development.json
