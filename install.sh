@@ -23,13 +23,19 @@ chmod -R u+w /mnt/server/
 mkdir -p /.cache/yarn
 chown -R nobody: /.cache/yarn/
 chmod -R u+w /.cache/yarn/
-su -s /bin/ash "nobody" -c "ghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local"
+
+mkdir -p /home/container
+chown -R nobody: /home/container/
+chmod -R u+w /home/container/
+su -s /bin/ash "nobody" -c "ghost install local --no-start --no-enable --no-prompt --dir /home/container/ghost --process local"
 unlink /.ghost
 
-ghostlink=$(readlink /mnt/server/ghost/current)
-if [[ "${ghostlink:0:12}" == "/mnt/server/" ]]; then
-    ln -sfn /home/container/${ghostlink:12} /mnt/server/ghost/current
-fi
+mv /home/container/ghost /mnt/server/ghost
 
-sed 's/\/mnt\/server\//\/home\/container\//g' /mnt/server/ghost/config.development.json > temp.json
-mv temp.json /mnt/server/ghost/config.development.json
+# ghostlink=$(readlink /mnt/server/ghost/current)
+# if [[ "${ghostlink:0:12}" == "/mnt/server/" ]]; then
+#     ln -sfn /home/container/${ghostlink:12} /mnt/server/ghost/current
+# fi
+
+# sed 's/\/mnt\/server\//\/home\/container\//g' /mnt/server/ghost/config.development.json > temp.json
+# mv temp.json /mnt/server/ghost/config.development.json
