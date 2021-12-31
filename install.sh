@@ -19,5 +19,9 @@ mkdir /mnt/server/.ghost
 ln -s /mnt/server/.ghost /.ghost
 chown -R nobody: /mnt/server/
 chmod -R u+w /mnt/server/
+# route yarn install location
+mkdir -p /.cache/yarn
+chown -R nobody: /.cache/yarn/
+chmod -R u+w /.cache/yarn/
 su -s /bin/ash "nobody" -c "ghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local"
 unlink /.ghost
