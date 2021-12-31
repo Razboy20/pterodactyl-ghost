@@ -30,7 +30,7 @@ chmod -R u+w /home/container/
 su -s /bin/ash "nobody" -c "ghost install local --no-start --no-enable --no-prompt --dir /home/container/ghost --process local"
 unlink /.ghost
 
-mv /home/container/ghost /mnt/server/ghost
+mv /home/container/ghost /mnt/server
 
 # ghostlink=$(readlink /mnt/server/ghost/current)
 # if [[ "${ghostlink:0:12}" == "/mnt/server/" ]]; then
