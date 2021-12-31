@@ -25,3 +25,6 @@ chown -R nobody: /.cache/yarn/
 chmod -R u+w /.cache/yarn/
 su -s /bin/ash "nobody" -c "ghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local"
 unlink /.ghost
+
+ghostlink=$(readlink /mnt/server/ghost/current)
+ln -sfn /home/container/${ghostlink:12} /mnt/server/ghost/current
