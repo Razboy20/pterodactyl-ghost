@@ -15,7 +15,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "apk --no-cache add git\r\ncd /mnt/server/\r\ngit clone https://github.com/razboy20/pterodactyl-ghost ./temp\r\nchmod +x ./install.sh\r\n./install.sh\r\nrm -rf ./temp",
+            "script": "apk --no-cache add git\r\ncd \/mnt\/server\/\r\ngit clone https:\/\/github.com\/razboy20\/pterodactyl-ghost .\/temp\r\nchmod +x .\/temp\/install.sh\r\n\r\n.\/temp\/install.sh\r\n\r\nrm -rf .\/temp",
             "container": "alpine:latest",
             "entrypoint": "ash"
         }

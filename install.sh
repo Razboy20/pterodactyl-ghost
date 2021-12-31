@@ -16,6 +16,8 @@ chmod +x /mnt/server/start.sh
 mkdir /mnt/server/ghost
 mkdir /mnt/server/.ghost
 # route ghost config location to mount
-ln /mnt/server/.ghost ~/.ghost
-ghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local
-unlink /mnt/server/.ghost
+ln -s /mnt/server/.ghost /.ghost
+chown -R nobody: /mnt/server/
+chmod -R u+w /mnt/server/
+su -s /bin/ash "nobody" -c "ghost install local --no-start --no-enable --no-prompt --dir /mnt/server/ghost --process local"
+unlink /.ghost
