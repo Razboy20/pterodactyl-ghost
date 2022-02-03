@@ -13,7 +13,6 @@ curl "https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=33572
 chmod +x /mnt/server/caddy-server
 chmod +x /mnt/server/start.sh
 
-mkdir /mnt/server/ghost
 mkdir /mnt/server/.ghost
 # route ghost config location to mount
 ln -s /mnt/server/.ghost /.ghost
