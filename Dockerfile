@@ -1,4 +1,4 @@
-FROM node:14-alpine3.13
+FROM node:18-alpine
 
 RUN apk --update --no-cache add curl ca-certificates
 RUN npm install ghost-cli@latest -g
