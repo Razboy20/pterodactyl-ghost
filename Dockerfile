@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:16-alpine
 
 RUN apk --update --no-cache add curl ca-certificates
 RUN npm install ghost-cli@latest -g
@@ -12,5 +12,3 @@ WORKDIR /home/container
 COPY ./entrypoint.sh /entrypoint.sh
 
 CMD ["/bin/ash", "/entrypoint.sh"]
-
-#RUN setcap 'cap_net_bind_service=+ep' /home/container/caddy-server
