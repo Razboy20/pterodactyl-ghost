@@ -5,7 +5,7 @@ cd /mnt/server
 apk --no-cache add curl sudo nodejs npm
 apk add --no-cache 'su-exec>=0.2'
 
-npm install ghost-cli@latest -g
+npm i --no-audit ghost-cli@latest -g
 
 mkdir /.npm
 chmod -R 755 /.npm
