@@ -2,7 +2,7 @@
 
 cd /mnt/server
 
-apk --no-cache add sudo make gcc g++ linux-headers
+apk --no-cache add sudo curl
 apk add --no-cache 'su-exec>=0.2'
 
 npm i --no-audit ghost-cli@latest -g
