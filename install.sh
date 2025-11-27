@@ -2,7 +2,7 @@
 
 cd /mnt/server
 
-apk --no-cache add sudo curl
+apk --no-cache add sudo curl python3 py3-pip
 apk add --no-cache 'su-exec>=0.2'
 
 npm i --no-audit ghost-cli@latest -g

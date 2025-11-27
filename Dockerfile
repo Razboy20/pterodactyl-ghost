@@ -1,6 +1,6 @@
-FROM node:18-alpine
+FROM node:22-alpine
 
-RUN apk --update --no-cache add curl python3 python3-dev ca-certificates \
+RUN apk --update --no-cache add curl python3 python3-dev py3-pip ca-certificates \
 	&& adduser -D -h /home/container container
 RUN npm i --no-audit ghost-cli@latest -g
 
